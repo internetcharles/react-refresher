@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { getCharacters } from '../../services/hey-arnold-api';
 
 export default class HomePage extends Component {
@@ -15,9 +16,11 @@ export default class HomePage extends Component {
     const { characters } = this.state;
 
     const characterElements = characters.map(character => (
-      <li key={character.name}>
-        {character.name}
-      </li>
+      <Link key={character._id} to={`/${character._id}`}>
+        <li key={character.name}>
+          {character.name}
+        </li>
+      </Link>
     ));
 
     return (
